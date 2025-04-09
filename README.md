@@ -23,6 +23,19 @@ All the relevant teams and members who have subscribed to that SNS topic would r
 
 * Note: Steps on how to move the file to "archive" bucket has not been included in the following section. You can research and try out that on your own.
 
+### Pre-requisites
+
+Before you begin, make sure you have:
+* An AWS account
+* Basic understanding of the following:
+	* AWS services like
+ 		* S3
+   * Lambda
+   * RDS
+   * Secrets Manager
+   * SNS
+   * STS
+
 ### Step 1
 
 Create two AWS S3 buckets, for example:
