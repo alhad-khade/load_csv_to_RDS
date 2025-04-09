@@ -10,11 +10,11 @@ This repo describes a data pipeline for a CSV file data to be automatically load
 1. In the above illustration we can see that there are more than one way how a CSV file can land-up in an AWS S3 bucket of Data Engineering team.
 2. Using S3 Event Notification for S3 bucket ("-raw" in this case), an AWS Lambda function can be triggered to carry on the further tasks.
 3. same as 4
-4. Lambda function creates a Secrets Manager client session and retrieves secrets like the RDS DB credential username, password, host url, port number etc., using "**get_secret_value**" method of boto3 library.
-5. Lambda function uses S3 boto3 client to interact with S3 and uses "**get_object**" method to get the csv file data. This data is then used to create a pandas DataFrame using "**read_csv**" method of pandas library.
-6. Lambda function makes use of "**to_sql**" method in pandas to write records stored in the DataFrame to a RDS MySQL database. It uses the SQLAlchemy engine to make a connection to the database.
+4. Lambda function creates a Secrets Manager client session and retrieves secrets like the RDS DB credential username, password, host url, port number etc., using "**get_secret_value**" method of **boto3** library.
+5. Lambda function uses S3 **boto3** client to interact with S3 and uses "**get_object**" method to get the csv file data. This data is then used to create a pandas DataFrame using "**read_csv**" method of **pandas** library.
+6. Lambda function makes use of "**to_sql**" method in **pandas** to write records stored in the DataFrame to a RDS MySQL database. It uses the **SQLAlchemy** engine to make a connection to the database.
 7. Based on the response received from the AWS RDS database, the lambda function comes to know whether the dataload was successful or not.
-8. Lambda function then utilzes the SNS boto3 client to "**publish**" the appropriate notification (Success or Failure) to the specific SNS topic.
+8. Lambda function then utilzes the SNS **boto3** client to "**publish**" the appropriate notification (Success or Failure) to the specific SNS topic.
 9. Once the CSV file processing is complete, the CSV file would be moved to "-archive" bucket. If not moved, then optionally it can be moved to less expensive S3 storage classes and eventually moved to S3 Glacier.
 
 All the relevant teams and members who have subscribed to that SNS topic would receive the notification. Then all the authentic consumers can then consume this data available in the RDS database.
