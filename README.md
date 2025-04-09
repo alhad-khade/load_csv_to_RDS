@@ -36,8 +36,8 @@ Before you begin, make sure you have:
    		* Secrets Manager
    		* SNS
    		* STS
-     * CloudWatch
-     * Security Groups
+     	* CloudWatch
+     	* Security Groups
      * Python
      * SQL
      * Accessing databases remotely via tools such as DBeaver, MySQL Workbench, HeidiSQL etc
