@@ -27,22 +27,28 @@ All the relevant teams and members who have subscribed to that SNS topic would r
 
 Before you begin, make sure you have:
 * An AWS account
+* AWS user with AdministratorAccess IAM Permission.
 * Basic understanding of the following:
 	* AWS services like
  		* S3
-   * Lambda
-   * RDS
-   * Secrets Manager
-   * SNS
-   * STS
+		* Lambda
+   		* RDS
+   		* Secrets Manager
+   		* SNS
+   		* STS
+     		* CloudWatch
+       		* Security Groups
+         * Python
+         * SQL
+         * Accessing databases remotely via tools such as DBeaver, MySQL Workbench, HeidiSQL etc
 
-### Step 1
+### Step 1: Create two AWS S3 buckets
 
 Create two AWS S3 buckets, for example:
 * s3://dehlive-sales-_<your_AWS_Account_number>_-us-east-1-**raw**
 * s3://dehlive-sales-_<your_AWS_Account_number>_-us-east-1-**archive**
 
-### Step 2
+### Step 2: Creating an AWS RDS Database
 
 Creating a free tier AWS RDS Database (MySQL Engine):
 
@@ -70,7 +76,7 @@ If the permission is not as follows, update the security group to allow inbound 
 
 ![image](https://github.com/user-attachments/assets/de556b90-02dc-407e-8449-7c3e3735815e)
 
-### Step 3
+### Step 3: Connecting to the newly created RDS database using a database management tool
 
 Connect to the newly created Database Engine using “MySQL Workbench” or “DBeaver”.
 
@@ -82,9 +88,9 @@ Based on the column and datatype, create the table “sales” the database “s
 ![image](https://github.com/user-attachments/assets/e610babf-e365-4a7f-8df3-8403bad2478e)
 
 
-### Step 4
+### Step 4: Create Secrets in Secret Manager
 
-Create Secrets in Secret Manager: 
+Create Secrets in Secret Manager as follow: 
 
 * Click on “Store a new secret”.
 * Keep all options to default, but for the below values.
@@ -110,19 +116,19 @@ During the Lambda execution, we would be requiring the table name as well. Hence
 ![image](https://github.com/user-attachments/assets/1f1263e3-81da-401b-af46-d9806785c2b2)
 
 
-### Step 5
+### Step 5: Create a SNS topic
 
 Create a SNS topic, subscribe an email to that topic to get the notification emails as per the Lambda execution status. 
 
  
-### Step 6
+### Step 6: Create an IAM role for Lambda function
 
-Create an IAM role for Lambda function.
+Create an IAM role for Lambda function as follows.
 
 ![image](https://github.com/user-attachments/assets/5c9efbaa-36a0-4ea7-a138-b0dcb5282111)
 
 
-### Step 7
+### Step 7: Create a Lambda function
 
 Create a Lambda function to carry out all the tasks mentioned in the [Reading the diagram](#my-custom-anchor-point) section.
 
@@ -147,9 +153,9 @@ Add layers for following libraries:
 ![image](https://github.com/user-attachments/assets/c53e1d05-43b9-4a8f-875d-f047559e5487)
 
 
-### Step 8
+### Step 8: To add triggers to S3 bucket
 
-To add triggers to S3 bucket.
+To add triggers to S3 bucket as follows.
 
 ![image](https://github.com/user-attachments/assets/9e637165-3e69-49b7-86eb-8175502d4d50)
 
@@ -162,7 +168,7 @@ Rest all options can be left unchecked, as it is.
 Click on the “Save changes” button. 
 
 
-### Step 9
+### Step 9: Test the pipeline
 
 Test the pipeline by uploading a data file to the “-raw” bucket. 
 
