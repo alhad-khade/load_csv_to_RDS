@@ -7,7 +7,7 @@ This repo describes a data pipeline for a CSV file data to be automatically load
 ![Loading data to RDS](https://github.com/user-attachments/assets/04769ede-0fe4-44f8-837e-fb000ad77233)
 
 ## Reading the diagram <a name="my-custom-anchor-point"></a>
-1. In the above illustration we can see that there are more than one way how a CSV file can land-up in an AWS S3 bucket.
+1. In the above illustration we can see that there are more than one way how a CSV file can land-up in an AWS S3 bucket of Data Engineering team.
 2. Using S3 Event Notification for S3 bucket ("-raw" in this case), an AWS Lambda function can be triggered to carry on the further tasks.
 3. same as 4
 4. Lambda function creates a Secrets Manager client session and retrieves secrets like the RDS DB credential username, password, host url, port number etc., using "get_secret_value" method of boto3 library.
