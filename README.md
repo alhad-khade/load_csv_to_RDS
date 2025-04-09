@@ -36,11 +36,11 @@ Before you begin, make sure you have:
    		* Secrets Manager
    		* SNS
    		* STS
-     		* CloudWatch
-       		* Security Groups
-         * Python
-         * SQL
-         * Accessing databases remotely via tools such as DBeaver, MySQL Workbench, HeidiSQL etc
+     * CloudWatch
+     * Security Groups
+     * Python
+     * SQL
+     * Accessing databases remotely via tools such as DBeaver, MySQL Workbench, HeidiSQL etc
 
 ### Step 1: Create two AWS S3 buckets
 
